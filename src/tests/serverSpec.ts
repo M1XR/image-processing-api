@@ -9,11 +9,6 @@ describe('Server Test "/"', () => {
     expect(response.status).toEqual(200);
   });
 
-  it('should send a Response', async () => {
-    const response = await request.get('/');
-    expect(response).toBeTruthy();
-  });
-
   it('should send a File with type HTML', async () => {
     const response = await request.get('/');
     expect(response.type).toEqual('text/html');
@@ -22,11 +17,6 @@ describe('Server Test "/"', () => {
   it('should send a status of 404 if endpoint not exists', async () => {
     const response = await request.get('/9');
     expect(response.status).toEqual(404);
-  });
-
-  it('should send a Response if endpoint not exists', async () => {
-    const response = await request.get('/9');
-    expect(response).toBeTruthy();
   });
 
   it('should send a File with type HTML if endpoint not exists', async () => {
