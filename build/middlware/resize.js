@@ -12,16 +12,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
+const sharp_1 = __importDefault(require("sharp"));
 const path_1 = __importDefault(require("path"));
-const resize_1 = __importDefault(require("../../middlware/resize"));
-const image = express_1.default.Router();
-const thumbFolder = '../../../images/thumb';
-image.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const filename = req.query.filename;
-    const width = parseInt(req.query.width);
-    const height = parseInt(req.query.height);
-    yield (0, resize_1.default)(filename, width, height);
-    res.sendFile(path_1.default.join(__dirname, thumbFolder, `${filename}_${width}x${height}.jpg`));
-}));
-exports.default = image;
+const resize = (filename, width, height) => __awaiter(void 0, void 0, void 0, function* () {
+    const pathFullImg = path_1.default.join(__dirname, '../../images/full', `${filename}.jpg`);
+    const pathThumbImg = path_1.default.join(__dirname, '../../images/full', `${filename}_${width}x${height}.jpg`);
+    yield (0, sharp_1.default)(pathFullImg).resize(width, height).toFile(pathThumbImg);
+});
+exports.default = resize;

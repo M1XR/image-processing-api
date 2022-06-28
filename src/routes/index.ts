@@ -1,12 +1,12 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import image from './api/image';
+import path from 'path';
 
 const routes = express.Router();
 
-routes.get('/', (req, res) => {
-  res.send(
-    'For rezising Image, please use the following Endpoint, provided with filename, width and height: https://localhost:3000/api/image/'
-  );
+// send description File to Browser
+routes.get('/', (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, '../../', 'server.html'));
 });
 
 routes.use('/image', image);

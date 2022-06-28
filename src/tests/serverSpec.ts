@@ -3,15 +3,34 @@ import app from '../server';
 
 const request = supertest(app);
 
-describe('Endpoint Test "/"', () => {
-  it('should have a response status of 200', async () => {
+describe('Server Test "/"', () => {
+  it('should send a status of 200', async () => {
     const response = await request.get('/');
-    expect(response.status).toBe(200);
+    expect(response.status).toEqual(200);
   });
 
   it('should send a Response', async () => {
-    const responseText = 'Server runs at Port 3000';
     const response = await request.get('/');
-    expect(response.text).toMatch(responseText);
+    expect(response).toBeTruthy();
+  });
+
+  it('should send a File with type HTML', async () => {
+    const response = await request.get('/');
+    expect(response.type).toEqual('text/html');
+  });
+
+  it('should send a status of 404 if endpoint not exists', async () => {
+    const response = await request.get('/9');
+    expect(response.status).toEqual(404);
+  });
+
+  it('should send a Response if endpoint not exists', async () => {
+    const response = await request.get('/9');
+    expect(response).toBeTruthy();
+  });
+
+  it('should send a File with type HTML if endpoint not exists', async () => {
+    const response = await request.get('/9');
+    expect(response.type).toEqual('text/html');
   });
 });
