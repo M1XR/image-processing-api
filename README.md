@@ -1,19 +1,29 @@
 # Image Processing API
 
 1. Description
-2. Usage
-3. Install & Run
+2. Install & Run
+3. Usage
 4. Other Scripts
 
 ---
 
 ## 1. Description
 
-This is the Udacity Project from "Backend Developement with Node.js"-Course
+This is the Udacity Project from the "Backend Developement with Node.js"-Course
 
-The API resizes Images that are given in the directory 'root/images/full', saves the resized Images in 'root/images/thumb' and send them to the Browser. The resize process dont start if a resized version of an Image with the same dimensions exist. In this case the resized Image will called from the root directory.
+This Project is a API to resize Images. With a request with filename, width and height parameters to the Endpoint you get a resized Image in Browser Window and saved to local disc. Repeating the same request will not process a new Image, instead the Image is pulled from local disc.
 
-## 2. Usage
+## 2. Install & Run
+
+### Install
+
+`npm install` in the root directory
+
+### Run
+
+`npm run build` and then `npm run start` will start the server on _localhost:3000_
+
+## 3. Usage
 
 ### How it works?
 
@@ -23,9 +33,12 @@ After the server runs you can call the Endpoint of the API.
 >
 > _localhost:3000/api/image?filename=bridge&width=500&height=500_
 
-### filename
+It is necessary to provide all three URL parameter: filename, width and height.
 
-In the root directory where five Images given. Select one and provide the name as filename to the API.
+### URL Parameters
+
+The following images ca be choosed as _filename_
+(provided in _'root/assets/images/full/'_):
 
 - bridge
 - haybales
@@ -33,23 +46,11 @@ In the root directory where five Images given. Select one and provide the name a
 - winter
 - wheat
 
-### width and height
-
-In addition provide a width and height which should the resized Image have. The width and height should be positiv numerical values.
-
-## 3. Install & Run
-
-### Install
-
-Open the Project-Directory in your Termianl and run `npm install`
-
-### Run
-
-Build a build with `npm run build`and start the server with `npm run start`
+_width_ and _height_ can be choosed individually.
 
 ## 4. Other Scripts
 
 - `npm run prettier` style code with Prettier
 - `npm run lint` lint with ESLint
-- `npm run test` test with Jasmine
-- `npm run dev` start Server with Nodemon
+- `npm run test` run build and test with Jasmine
+- `npm run dev` start server with nodemon for developing
