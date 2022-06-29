@@ -4,6 +4,7 @@
 2. Install & Run
 3. Usage
 4. Other Scripts
+5. Sources
 
 ---
 
@@ -58,3 +59,7 @@ _width_ and _height_ can be choosed individually.
 - `npm run lint` lint with ESLint
 - `npm run test` run build and test with Jasmine
 - `npm run dev` start server with nodemon for developing
+
+## 5. Sources
+
+- page404.html -> used a template from https://freefrontend.com/html-css-404-page-templates/
