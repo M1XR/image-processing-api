@@ -14,32 +14,24 @@ describe('Server Test Route "/api/image"', () => {
   describe('Correct Endpoint Request', () => {
     describe('Image NOT exist in thumb-Folder', () => {
       it('should send a status of 200', async () => {
-        const response = await request.get(
-          '/api/image?filename=bridge&width=100&height=100'
-        );
+        const response = await request.get('/api/image?filename=bridge&width=100&height=100');
         expect(response.status).toEqual(200);
       });
 
       it('should send a File with type JPG', async () => {
-        const response = await request.get(
-          '/api/image?filename=bridge&width=100&height=100'
-        );
+        const response = await request.get('/api/image?filename=bridge&width=100&height=100');
         expect(response.type).toEqual('image/jpeg');
       });
     });
 
     describe('Image exists in Thumb-Folder', () => {
       it('should send a status of 200', async () => {
-        const response = await request.get(
-          '/api/image?filename=bridge&width=100&height=100'
-        );
+        const response = await request.get('/api/image?filename=bridge&width=100&height=100');
         expect(response.status).toEqual(200);
       });
 
       it('should send a File with type JPG', async () => {
-        const response = await request.get(
-          '/api/image?filename=bridge&width=100&height=100'
-        );
+        const response = await request.get('/api/image?filename=bridge&width=100&height=100');
         expect(response.type).toEqual('image/jpeg');
       });
     });
@@ -51,9 +43,9 @@ describe('Server Test Route "/api/image"', () => {
       expect(response.status).toEqual(404);
     });
 
-    it('should send a File with type HTML', async () => {
+    it('should throw an error', async () => {
       const response = await request.get('/api/image?XYZ');
-      expect(response.type).toEqual('text/html');
+      expect(response.error).toThrow();
     });
   });
 });

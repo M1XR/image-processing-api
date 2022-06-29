@@ -1,18 +1,18 @@
 import express, { Application } from 'express';
 import routes from './routes/index';
-import pageNotFound from './middlware/pageNotFound';
+import handling404 from './middlware/handling404';
 
 const app: Application = express();
 const port = 3000;
 
 app.use('/api', routes);
 
+// handling 404 responses
+app.use(handling404);
+
 // start the express server
-app.listen(port, () => {
+app.listen(port, (): void => {
   console.log(`server started at http://localhost:${port}`);
 });
-
-// handling status 404-Page not found
-app.use(pageNotFound);
 
 export default app;
