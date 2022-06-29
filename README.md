@@ -13,6 +13,10 @@ This is the Udacity Project from the "Backend Developement with Node.js"-Course
 
 This Project is a API to resize Images. With a request with filename, width and height parameters to the Endpoint you get a resized Image in Browser Window and saved to local disc. Repeating the same request will not process a new Image, instead the Image is pulled from local disc.
 
+Bad Request 404 is catched and a .html-Page is send to browser.
+
+The server sends messages to browser if the Endpoint is requested with missing/without parameters. In addition, the server sends a message if the provided filename don't exist as file in /assests/images/full/.
+
 ## 2. Install & Run
 
 ### Install
